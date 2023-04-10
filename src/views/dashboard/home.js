@@ -6,14 +6,14 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Cards } from '../../components';
 
 const { width, height } = Dimensions.get('window');
-const Home = () => {
+const Home = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar style='light' />
             <View style={styles.bgHeader}>
                 <View style={styles.headFlex}>
                     <Logo />
-                    <Ionicons name="ios-search" color="#fff" size={23} />
+                    <Ionicons name="ios-search" color="#fff" size={23} onPress={() => navigation.navigate('Search')} />
                 </View>
                 <View style={[styles.headFlex, { width: '80%', padding: 5, alignSelf: 'center' }]}>
                     <TouchableOpacity>
@@ -62,20 +62,18 @@ const Home = () => {
                 <View style={styles.bodyList}>
                     <Itext type="H3" stylesProp={{ fontFamily: 'NunitoSans-ExtraBold', padding: 5 }}>Top 10 TV Shows in Nigeria Today</Itext>
                     <ScrollView style={{ marginTop: 10 }} horizontal showsHorizontalScrollIndicator={false}>
-                        <Cards />
-                        <Cards />
-                        <Cards />
-                        <Cards />
-                        <Cards />
+                        <Cards navigation={navigation} />
+                        <Cards navigation={navigation} />
+                        <Cards navigation={navigation} />
+                        <Cards navigation={navigation} />
+                        <Cards navigation={navigation} />
                     </ScrollView>
                 </View>
             </ScrollView>
         </View>
     )
 }
-
-export default Home
-
+ 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -101,3 +99,5 @@ const styles = StyleSheet.create({
         marginVertical: 10
     }
 })
+
+export default Home
